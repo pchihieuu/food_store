@@ -1,115 +1,109 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import CategoryTab from "../components/ecommerce/categoryTab";
+import FeatchDeals from "../components/ecommerce/fetchDeals";
+import FeatchTab from "../components/ecommerce/fetchTab";
+import FetchTabSlider from "../components/ecommerce/fetchTabSlider";
+import Bottom from "../components/elements/Bottom";
+import QuickView from "./../components/ecommerce/QuickView";
+import Banner5 from "./../components/elements/Banner5";
+import Deals1 from "./../components/elements/Deals1";
+import IntroPopup from "./../components/elements/IntroPopup";
+import Layout from "./../components/layout/Layout";
+import CategorySlider from "./../components/sliders/Category";
+import Intro1 from "./../components/sliders/Intro1";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    return (
+        <>
+            <IntroPopup />
 
-      <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+            <Layout noBreadcrumb="d-none">
+                <section className="home-slider position-relative mb-30">
+                    <div className="container">
+                        <div className="home-slide-cover mt-30">
+                            <Intro1 />
+                        </div>
+                    </div>
+                </section>
 
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
+                <section className="popular-categories section-padding">
+                    <div className="container wow animate__fadeIn animate__animated">
+                        <div className="section-title">
+                            <div className="title">
+                                <h3>Featured Categories</h3>
+                                <ul className="list-inline nav nav-tabs links">
+                                    <li className="list-inline-item nav-item">
+                                        <Link href="/products">
+                                            <a className="nav-link">Cake & Milk</a>
+                                        </Link>
+                                    </li>
+                                    <li className="list-inline-item nav-item">
+                                        <Link href="/products">
+                                            <a className="nav-link">Coffes & Teas</a>
+                                        </Link>
+                                    </li>
+                                    <li className="list-inline-item nav-item">
+                                        <Link href="/products">
+                                            <a className="nav-link active">Pet Foods</a>
+                                        </Link>
+                                    </li>
+                                    <li className="list-inline-item nav-item">
+                                        <Link href="/products">
+                                            <a className="nav-link">Vegetables</a>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="carausel-10-columns-cover position-relative">
+                            <div className="carausel-10-columns" id="carausel-10-columns">
+                                <CategorySlider />
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+                <section className="banners mb-25">
+                    <div className="container">
+                        <div className="row">
+                            <Banner5 />
+                        </div>
+                    </div>
+                </section>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+                <section className="product-tabs section-padding position-relative">
+                    <div className="container">
+                        <div className="col-lg-12">
+                            <CategoryTab />
+                        </div>
+                    </div>
+                </section>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+                <section className="section-padding pb-5">
+                    <div className="container">
+                        <FetchTabSlider />
+                    </div>
+                </section>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+                <section className="section-padding pb-5">
+                    <div className="container">
+                        <div className="section-title wow animate__animated animate__fadeIn" data-wow-delay="0">
+                            <h3 className="">Deals Of The Day</h3>
+                            <Link href="/products">
+                                <a className="show-all">
+                                    All Deals
+                                    <i className="fi-rs-angle-right"></i>
+                                </a>
+                            </Link>
+                        </div>
+                        <FeatchDeals />
+                    </div>
+                </section>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
-      </footer>
+                <Bottom />
 
-      <style jsx>{`
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
-        }
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
-  )
+                <QuickView />
+            </Layout>
+        </>
+    );
 }
